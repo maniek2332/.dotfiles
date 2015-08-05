@@ -1,0 +1,114 @@
+# Lines configured by zsh-newuser-install
+
+export EDITOR=vim
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=100000
+#setopt appendhistory
+setopt autocd
+setopt beep
+setopt nomatch
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt no_share_history
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+
+eval "`dircolors -b`"
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' completer _expand _complete _ignored
+zstyle ':completion:*' max-errors 0
+zstyle ':completion:*' menu select
+zstyle ':completion:*:processes' command 'ps -xuf'
+zstyle ':completion:*:processes' sort false
+zstyle ':completion:*:processes-names' command 'ps xho command'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+
+zstyle :compinstall filename '$HOME/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# autoload -U promptinit
+# promptinit
+# prompt adam1
+
+source ~/.zsh/prompt.zsh
+
+autoload -U zcalc
+
+zstyle ':mime:.avi' handler mplayer %s
+zstyle ':mime:.avi' flags needsterminal
+
+autoload -U zsh-mime-setup
+zsh-mime-setup
+
+###
+
+alias dhalt='delaycmd sudo halt 90'
+alias dshutdown='delacmd sudo shutdown -h now 90'
+alias grep='grep --colour=auto'
+alias ls='ls --color=auto'
+alias napi='qnapi -c'
+alias pacman='pacman-color'
+alias play-flash='mplayer /tmp/Flash*'
+
+setopt correctall
+setopt hist_ignore_all_dups
+setopt share_history
+
+#exec 2>>(while read line; do
+  #print '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
+
+# Aliases
+bindkey "^[." insert-last-word
+bindkey "^R" history-incremental-search-backward
+bindkey "^T" history-incremental-search-forward
+
+bindkey -M 'viins' '^[[2~' vi-cmd-mode
+bindkey -M 'vicmd' '^[[2~' vi-insert
+bindkey -M 'vicmd' '' vi-insert
+
+bindkey "^[[3~" delete-char
+bindkey '^[OH' beginning-of-line
+bindkey '^[OF' end-of-line
+bindkey '^[[5~' history-beginning-search-backward
+bindkey '^[[6~' history-beginning-search-forward
+
+bindkey '^[[1;5D' backward-word # Ctrl+left arrow
+bindkey '^[[1;5C' forward-word # Ctrl+right arrow
+
+bindkey '^[[1;3D' backward-word # Alt+left arrow
+bindkey '^[[1;3C' forward-word # Alt+right arrow
+
+bindkey '' vi-kill-eol
+
+bindkey '' pre-accept-line # this is from ~/.zsh/zsh_prompt
+
+bindkey -s '' 'mc'
+
+bindkey '' backward-kill-word
+
+# Special aliases
+
+alias -s avi=mplayer
+alias -s txt=vim
+#alias -s py=vim
+alias -s cpp=vim
+
+alias -g G='| grep'
+alias -g EG='| egrep'
+alias -g C='| wc -l'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g NUL="> /dev/null 2>&1"
+alias -g ND='$(ls -d *(/om[1]))' # newest directory
+alias -g NF='$(ls *(.om[1]))'    # newest file
+
