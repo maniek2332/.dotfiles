@@ -2,7 +2,7 @@
 
 cd $(dirname $0)
 
-# git submodule pull?
+git submodule update --init fonts/powerline-patched
 
 mkdir -p ~/.fonts
 mkdir -p ~/.fonts.conf.d

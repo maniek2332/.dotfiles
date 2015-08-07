@@ -11,7 +11,6 @@ function add_target {
 
 add_target "zsh/" ".zsh"
 add_target "zsh/zshrc" ".zshrc"
-add_target "test/" ".test"
 
 for (( I=0; I<${#TARGETS[@]}; I+=2 ))
 do

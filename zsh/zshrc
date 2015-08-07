@@ -39,7 +39,17 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 #
 
-export HOST_PROMPT_COLOR='yellow'
+HOSTNAME=$(hostname)
+if [[ "$HOSTNAME" -eq "lynx" ]]
+then
+    export HOST_PROMPT_COLOR='green'
+elif [[ "$HOSTNAME" -eq "mariusz-desktop" ]]
+then
+    export HOST_PROMPT_COLOR='yellow'
+else
+    export HOST_PROMPT_COLOR='white'
+fi
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source ~/.zsh/zshrc_global
 source ~/.utils/utils.rc
