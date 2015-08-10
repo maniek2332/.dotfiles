@@ -40,10 +40,10 @@ source $ZSH/oh-my-zsh.sh
 #
 
 HOSTNAME=$(hostname)
-if [[ "$HOSTNAME" -eq "lynx" ]]
+if [[ "$HOSTNAME" == "lynx" ]]
 then
     export HOST_PROMPT_COLOR='green'
-elif [[ "$HOSTNAME" -eq "mariusz-desktop" ]]
+elif [[ "$HOSTNAME" == "mariusz-desktop" ]]
 then
     export HOST_PROMPT_COLOR='yellow'
 else
