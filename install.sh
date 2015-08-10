@@ -9,8 +9,10 @@ function add_target {
     TARGETS[${#TARGETS[@]}]="../$2"
 }
 
-add_target "zsh/" ".zsh"
-add_target "zsh/zshrc" ".zshrc"
+add_target "zsh/"               ".zsh"
+add_target "zsh/zshrc"          ".zshrc"
+add_target "git/gitignore"      ".gitignore"
+add_target "git/gitconfig"      ".gitconfig"
 
 for (( I=0; I<${#TARGETS[@]}; I+=2 ))
 do

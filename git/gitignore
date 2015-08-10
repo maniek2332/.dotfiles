@@ -1,0 +1,9 @@
+*.pyc
+.*.swp
+.*.swo
+.ropeproject/
+_vimrc
+*.d
+*.o
+
+/webapp/site_media/upload/localtizement/preview/

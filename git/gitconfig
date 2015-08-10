@@ -1,0 +1,11 @@
+[user]
+	email = mokulanis@i2asolutions.com
+	name = mokulanis
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore
+	pager = less -F -X
+[alias]
+	pushu = !git push --set-upstream origin `git symbolic-ref --short HEAD` --dry-run
+	pushuu = !git push --set-upstream origin `git symbolic-ref --short HEAD`
