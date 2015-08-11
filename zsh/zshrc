@@ -34,10 +34,12 @@ ZSH_THEME="maniek"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras svn sudo vi-mode autojump cp extract pip lol nyan screen)
 
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-#
+if [ -f $ZSH/oh-my-zsh.sh ]
+then
+    source $ZSH/oh-my-zsh.sh
+else
+    echo "INFO: oh-my-zsh not installed"
+fi
 
 HOSTNAME=$(hostname)
 if [[ "$HOSTNAME" == "lynx" ]]
@@ -46,14 +48,33 @@ then
 elif [[ "$HOSTNAME" == "mariusz-desktop" ]]
 then
     export HOST_PROMPT_COLOR='yellow'
+elif [[ "$HOSTNAME" == "cassiopeia" ]]
+then
+    export HOST_PROMPT_COLOR='cyan'
 else
     export HOST_PROMPT_COLOR='white'
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 source ~/.zsh/zshrc_global
-source ~/.utils/utils.rc
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+if [ -f ~/.utils/utils.rc ]
+then
+    source ~/.utils/utils.rc
+else
+    echo "INFO: utils not installed"
+fi
+
+if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]
+then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+elif [ -f /usr/local/bin/virtualenvwrapper.sh ]
+then
+    source /usr/local/bin/virtualenvwrapper.sh 
+else
+    echo "INFO: virtualenvwrapper not installed"
+fi
 
 export PATH=/home/$USER/bin:$PATH
 #export PATH=$PATH:/usr/bin/site_perl/
