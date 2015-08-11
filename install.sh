@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DOTFILES_DIR=`dirname $0`
+cd `dirname $0`
+DOTFILES_DIR=`pwd`
 TARGET_DIR="$DOTFILES_DIR/.."
 
 TARGETS=()
