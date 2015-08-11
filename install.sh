@@ -1,12 +1,13 @@
 #!/bin/bash
 
-cd $(dirname $0)
+DOTFILES_DIR=`dirname $0`
+TARGET_DIR="$DOTFILES_DIR/.."
 
 TARGETS=()
 
 function add_target {
-    TARGETS[${#TARGETS[@]}]="$1"
-    TARGETS[${#TARGETS[@]}]="../$2"
+    TARGETS[${#TARGETS[@]}]="$DOTFILES_DIR/$1"
+    TARGETS[${#TARGETS[@]}]="$TARGET_DIR/$2"
 }
 
 add_target "zsh/"               ".zsh"
@@ -19,5 +20,5 @@ do
     SOURCE=${TARGETS[$I]}
     TARGET=${TARGETS[$[I+1]]}
     echo $I: ${SOURCE} '->' ${TARGET}
-    ln -s -i -v -T -r ${SOURCE} ${TARGET}
+    ln -s -i -v -T ${SOURCE} ${TARGET}
 done
