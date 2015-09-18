@@ -11,10 +11,11 @@ function add_target {
     TARGETS[${#TARGETS[@]}]="$TARGET_DIR/$2"
 }
 
-add_target "zsh/"               ".zsh"
-add_target "zsh/zshrc"          ".zshrc"
-add_target "git/gitignore"      ".gitignore"
-add_target "git/gitconfig"      ".gitconfig"
+add_target "zsh/"                       ".zsh"
+add_target "zsh/zshrc"                  ".zshrc"
+add_target "git/gitignore"              ".gitignore"
+add_target "git/gitconfig"              ".gitconfig"
+add_target "xbindkeys/xbindkeysrc"      ".xbindkeysrc"
 
 for (( I=0; I<${#TARGETS[@]}; I+=2 ))
 do
