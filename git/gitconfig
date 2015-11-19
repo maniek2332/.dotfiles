@@ -7,5 +7,7 @@
 	excludesfile = ~/.gitignore
 	pager = less -F -X
 [alias]
+    puff = pull --ff --ff-only
+    meff = merge --ff --ff-only
 	pushu = !git push --set-upstream origin `git symbolic-ref --short HEAD` --dry-run
 	pushuu = !git push --set-upstream origin `git symbolic-ref --short HEAD`

@@ -7,3 +7,7 @@ _vimrc
 *.o
 
 /webapp/site_media/upload/localtizement/preview/
+/data/Maponics_ZIPs_1114_SHP.zip
+/data/TM_WORLD_BORDERS/
+/data/zip-codes-database-DELUXE-BUSINESS-csv.zip
+/data/zip-codes-database-DELUXE-BUSINESS-csv/
