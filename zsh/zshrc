@@ -41,6 +41,17 @@ else
     echo "INFO: oh-my-zsh not installed"
 fi
 
+# http://chneukirchen.org/blog/archive/2011/02/10-more-zsh-tricks-you-may-not-know.html
+## Force file name completion on C-x TAB, Shift-TAB.
+zle -C complete-files complete-word _generic
+zstyle ':completion:complete-files:*' completer _files
+bindkey "^X^I" complete-files
+bindkey "^[[Z" complete-files
+# Force menu on C-x RET.
+zle -C complete-first complete-word _generic
+zstyle ':completion:complete-first:*' menu yes
+bindkey "^X^M" complete-first
+
 HOSTNAME=$(hostname)
 if [[ "$HOSTNAME" == "lynx" ]]
 then
@@ -56,7 +67,6 @@ else
 fi
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 source ~/.zsh/zshrc_global
 
 if [ -f ~/.utils/utils.rc ]
