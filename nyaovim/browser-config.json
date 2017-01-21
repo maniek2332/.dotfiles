@@ -1,0 +1,15 @@
+{
+    "window_options": {
+        "width": 1200,
+        "height": 960,
+        "fullscreen": false,
+        "alwaysOnTop": false,
+        "webPreferences": {
+            "webgl": false,
+            "plugins": true
+        }
+    },
+    "remember_window_state": false,
+    "single_instance": true,
+    "show_menubar": false
+}
