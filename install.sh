@@ -17,6 +17,7 @@ add_target "git/gitignore"              ".gitignore"
 add_target "git/gitconfig"              ".gitconfig"
 add_target "xbindkeys/xbindkeysrc"      ".xbindkeysrc"
 add_target "nyaovim/"                   ".config/nyaovim"
+add_target "../.vim/"                   ".config/nvim"
 
 for (( I=0; I<${#TARGETS[@]}; I+=2 ))
 do
