@@ -91,10 +91,10 @@ export PATH=/home/$USER/bin:$PATH
 #export PYTHONPATH="/home/maniek/programing/django/lib/python2.6/site-packages"
 export PYTHONIOENCODING='utf-8'
 
-export PATH="/home/maniek/.linuxbrew/bin:$PATH"
-export MANPATH="/home/maniek/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/maniek/.linuxbrew/share/info:$INFOPATH"
-export XDG_DATA_DIRS="/home/maniek/.linuxbrew/share:$XDG_DATA_DIRS"
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export XDG_DATA_DIRS="$HOME/.linuxbrew/share:$XDG_DATA_DIRS"
 
 export MPD_HOST="127.0.0.1"
 export MPD_PORT="6600"
