@@ -111,5 +111,8 @@ function VENV
     source ~/"virtualenv/$1/bin/activate"
 }
 
-alias E='gvim --servername "$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))" --remote-tab'
+#alias E='gvim --servername "$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))" --remote-tab'
+# pip3 install neovim-remote
+alias E='nvr --servername "/tmp/nvr_$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))" --remote-tab'
+alias EE='nvr --servername "/tmp/nvr_$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))"'
 
