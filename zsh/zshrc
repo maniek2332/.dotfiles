@@ -111,8 +111,37 @@ function VENV
     source ~/"virtualenv/$1/bin/activate"
 }
 
-#alias E='gvim --servername "$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))" --remote-tab'
-# pip3 install neovim-remote
-alias E='nvr --servername "/tmp/nvr_$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))" --remote-tab'
-alias EE='nvr --servername "/tmp/nvr_$(basename $([[ -n $VIRTUAL_ENV ]] && echo $VIRTUAL_ENV || echo GVIM))"'
+function vim_venv_name {
+    if [[ -n $VIRTUAL_ENV ]]
+    then
+        basename $VIRTUAL_ENV
+    elif [[ -n $NODE_VIRTUAL_ENV ]]
+    then
+        basename $NODE_VIRTUAL_ENV
+    else
+        echo "VIM"
+    fi
+}
 
+if [ $EDITOR = "vim" ]
+then
+    if which gvim > /dev/null
+    then
+        GVIM_BIN='gvim'
+    elif which vim.gtk3-py2 > /dev/null
+    then
+        GVIM_BIN='vim.gtk3-py2'
+    elif which vim.gtk-py2 > /dev/null
+    then
+        GVIM_BIN='vim.gtk-py2'
+    else
+        echo "Could not found GVIM binary"
+        GVIM_BIN='gvim'
+    fi
+    alias E='${GVIM_BIN} -g --servername "$(vim_venv_name)" --remote-tab'
+elif [ $EDITOR = "nvim" ]
+then
+    # pip3 install neovim-remote
+    alias E='nvr --servername "/tmp/nvr_$($(vim_venv_name))" --remote-tab'
+    alias EE='nvr --servername "/tmp/nvr_$($(vim_venv_name))"'
+fi
