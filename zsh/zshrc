@@ -103,11 +103,27 @@ export CVSROOT=":pserver:maniek@rshare.pl:/home/cvs/"
 
 alias halt='sudo halt'
 alias reboot='sudo reboot'
-alias E='gvim --remote-tab'
+
+function show_new_requirements {
+    if [[ -f requirements-dev.txt ]]
+    then
+        diff --new-line-format="" --unchanged-line-format="" \
+            <(pip freeze | sort) <(sort requirements-dev.txt)
+        return 0
+    elif [[ -f requirements.txt ]]
+    then
+        diff --new-line-format="" --unchanged-line-format="" \
+            <(pip freeze | sort) <(sort requirements.txt)
+        return 0
+    else
+        echo "No requirements.txt found!"
+        return 1
+    fi
+}
 
 function VENV
 {
-    [[ -z $1 ]] && echo "No virtualenv specified" && exit 1
+    [[ -z $1 ]] && echo "No virtualenv specified" && return 1
     source ~/"virtualenv/$1/bin/activate"
 }
 
@@ -125,15 +141,15 @@ function vim_venv_name {
 
 if [ $EDITOR = "vim" ]
 then
-    if which gvim > /dev/null
-    then
-        GVIM_BIN='gvim'
-    elif which vim.gtk3-py2 > /dev/null
+    if which vim.gtk3-py2 > /dev/null
     then
         GVIM_BIN='vim.gtk3-py2'
     elif which vim.gtk-py2 > /dev/null
     then
         GVIM_BIN='vim.gtk-py2'
+    elif which gvim > /dev/null
+    then
+        GVIM_BIN='gvim'
     else
         echo "Could not found GVIM binary"
         GVIM_BIN='gvim'
